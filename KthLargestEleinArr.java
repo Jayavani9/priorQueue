@@ -16,7 +16,8 @@ Example 2:
 Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
 Output: 4
 
-
+Solution:
+//Using a min Heap
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         //Tc: O(nlogk) and Sc: O(k)
@@ -35,3 +36,17 @@ class Solution {
         */
     }
 }
+
+//Using a max Heap
+
+PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> b-a);
+        //Tc: O(Nlogk) Sc: O(K)
+        for(int i : nums)
+        {
+            pq.add(i);
+        }
+        for(int i = 0 ; i < k-1 ; i++)
+        {
+            pq.poll();
+        }
+        return pq.peek();
